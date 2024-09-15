@@ -32,23 +32,29 @@ document.getElementById('process-video-btn').addEventListener('click', function(
         processingStatus.style.display = 'none';
         processingComplete.style.display = 'block';
 
-        // Simulate results (replace with actual video analysis in the future)
+        // Simulate results for both athletes (replace with actual video analysis in the future)
         const simulatedResults = [
-            { time: 5, position: 'Guard' },
-            { time: 10, position: 'Mount' },
-            { time: 15, position: 'Side Control' },
-            { time: 20, position: 'Back Control' },
+            { time: 5, athlete1Position: 'Guard', athlete2Position: 'Top Control' },
+            { time: 10, athlete1Position: 'Mount', athlete2Position: 'Bottom' },
+            { time: 15, athlete1Position: 'Side Control', athlete2Position: 'Guard' },
+            { time: 20, athlete1Position: 'Back Control', athlete2Position: 'Defending' },
         ];
+
+        // Clear previous results
+        resultsTable.innerHTML = '';
 
         // Populate the results table
         simulatedResults.forEach(result => {
             const row = document.createElement('tr');
             const timeCell = document.createElement('td');
-            const positionCell = document.createElement('td');
+            const athlete1Cell = document.createElement('td');
+            const athlete2Cell = document.createElement('td');
             timeCell.textContent = result.time;
-            positionCell.textContent = result.position;
+            athlete1Cell.textContent = result.athlete1Position;
+            athlete2Cell.textContent = result.athlete2Position;
             row.appendChild(timeCell);
-            row.appendChild(positionCell);
+            row.appendChild(athlete1Cell);
+            row.appendChild(athlete2Cell);
             resultsTable.appendChild(row);
         });
 
